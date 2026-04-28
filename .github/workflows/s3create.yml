@@ -1,0 +1,26 @@
+name: Create S3 Bucket
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  create-bucket:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::636155394208:role/github-oidc-s3-role
+          aws-region: ap-south-1
+
+      - name: Create S3 bucket
+        run: |
+          aws s3 mb s3://my-s3-oidc-bucket-26 --region ap-south-1
