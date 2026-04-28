@@ -27,4 +27,4 @@ jobs:
 
       - name: Upload synopsis file
         run: |
-          aws s3 RWA_Voting_System_Synopsis.pdf s3://my-new-s3-oidc-bucket-2026/RWA_Voting_System_Synopsis.pdf
+          aws s3 cp RWA_Voting_System_Synopsis.pdf s3://my-new-s3-oidc-bucket-2026/RWA_Voting_System_Synopsis.pdf
